@@ -1,11 +1,18 @@
-import Footer from "./footer"; // Import the Footer component
-import GetCompanyResponse from "./GetCompanyResponse";
-import Topnavigation from "./topnavigation";
+import Footer from "./Components/footer"; // Import the Footer component
+import GetCompanyResponse from "./CompanyResponse";
+import Topnavigation from "./Components/topnavigation";
+import Homepage from "./Components/Index"
+import Header  from "./Components/header";
 
-export default function Index() {
+export default async function Index() {
+const data = await GetCompanyResponse();
+console.log("api company data");
+console.log(data);
+
   return (
-    <>   
-      <GetCompanyResponse />
+    <> <Header companydata = {data}>
+    </Header>
+    <Homepage companydata = {data}></Homepage>
       <Footer />
     </>
   );

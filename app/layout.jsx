@@ -1,4 +1,4 @@
-import Header from './header';
+
 import "./bootstrap.css";
 import "./global.css";
 
