@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Product({ companydata }) {
+function ProductList({ companydata }) {
   const productList = companydata?.DATA?.PRDSERV?.[0]?.PRODLIST || [];
 
 
@@ -98,4 +98,4 @@ function Product({ companydata }) {
   );
 }
 
-export default Product;
+export default ProductList;
