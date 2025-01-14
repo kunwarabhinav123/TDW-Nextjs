@@ -1,15 +1,15 @@
-// app/page.tsx
+// app/page.jsx
 
 import Footer from "../footer"; // Import the Home component
-import GetCompanyResponse from "../GetCompanyResponse"
+import GetCompanyResponse from "../GetCompanyResponse";
 
-export default async function Index() {
+export default function Index() {
   console.log("Inside dynamic Route");
   
-    return(
-      <>   
-      <GetCompanyResponse></GetCompanyResponse>
-      <Footer></Footer>
-      </>
-    )
+  return (
+    <>   
+      <GetCompanyResponse />
+      <Footer />
+    </>
+  );
 }
