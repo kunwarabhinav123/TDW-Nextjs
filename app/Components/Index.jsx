@@ -1,4 +1,4 @@
-import Product from './productlist';
+import Product from './Productlist';
 
 export default function HomePage({ companydata }) {
   return (

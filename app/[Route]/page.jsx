@@ -1,12 +1,13 @@
 // app/page.jsx
 
-import Footer from "../Components/footer"; 
+import Footer from "../components/Footer"; 
 import GetCompanyResponse from "../CompanyResponse";
-import Header from "../Components/header";
-import Category from "../Components/category"; 
-import Aboutus from "../Components/Aboutus"
-import NotFound from "../Components/Notfound"
-
+import Header from "../components/Header";
+import Category from "../components/Category"; 
+import Aboutus from "../components/Aboutus"
+import NotFound from "../components/Notfound"
+import Catindex from "../components/Catindex";
+import Enquiry from "../components/Enquiry"
 
 // Assuming you have this component
 
@@ -15,9 +16,9 @@ export default async function Index() {
   console.log("Inside dynamic Route");
   console.log("printing data");
   data = await GetCompanyResponse();
-  console.log(data);
-  let pagename = data.PAGELINKTYPE;
-
+  console.log(data, 'page');
+  let pagename = data?.DATA?.PAGELINKTYPE;
+  console.log(pagename,'pagename');
   let pageComponent;
 
   // Use switch-case to render different components based on pagename
@@ -26,8 +27,14 @@ export default async function Index() {
       pageComponent = <Category companydata={data} />;
       break;
     case 'aboutus':
-      pageComponent = <Aboutus companydata={data} />;
+      pageComponent = <Aboutus/>;
       break;
+    case 'catindex':
+      pageComponent = <Catindex/>;
+      break;
+      case 'enquiry':
+        pageComponent = <Enquiry/>;
+        break;
     default:
       pageComponent = <NotFound />; // Default to homepage if no match
   }
@@ -36,7 +43,7 @@ export default async function Index() {
     <>
       <Header companydata={data} />
       {pageComponent} {/* Render the correct component */}
-      <Footer companydata={data}/>
+      <Footer/>
     </>
   );
 }

@@ -1,8 +1,8 @@
-import ProductList from './productlist';
+import ProductList from './Productlist';
 
 
-export default function Category(){
+export default function Category({companydata}){
     return(<>
-        <ProductList></ProductList>
+        <ProductList companydata={companydata}/>
         </>)
 };
