@@ -11,13 +11,13 @@ export async function middleware(request) {
   }
 
   console.log("inside middleware !!");
-  console.log(url.pathname);
+  console.log(url);
 
   // Check the Redirection Route
-  const redirect_condn = RedirectRoute_beforeAPI(url.pathname); // Pass only the pathname to the function
+  const redirect_condn = RedirectRoute_beforeAPI(url); // Pass only the pathname to the function
   if (redirect_condn) {
     // If redirect_condn is true, perform the redirect
-    return redirect_condn; // This should already be a NextResponse.redirect from RedirectRoute_beforeAPI
+    return redirect_condn; 
   }
 
   // If no redirect, proceed to the next handler

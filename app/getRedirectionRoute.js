@@ -1,21 +1,22 @@
 import { NextResponse  } from "next/server";
 
-export function RedirectRoute_beforeAPI(page_req) {
+export function RedirectRoute_beforeAPI(url) {
     const RedirectRoute = {
         "query.html": "enquiry.html"
     }
-    // page_req = String(page_req).replace(/^\//, '');
-    page_req = 'query.html';
-    console.log("page requested "+ page_req);
+    let domainName= url.origin;
+    let page_req = url.pathname;
+    let page_req1 = String(page_req).replace(/^\//, '');
+    console.log("page requested "+ page_req1);
     for (const key in RedirectRoute) {
-        let newUrl = "https://www.revomac.net/enquiry.html";
-        if (page_req == key) {
+        let newUrl = domainName+'/'+ RedirectRoute[key];
+        if (page_req1 == key) {
             console.log("Redirection to new url !!")
             return NextResponse.redirect(newUrl, 301);
         }
-        else{
-            return NextResponse.redirect(newUrl, 301);
-        }
+        // else{
+        //     return NextResponse.redirect(newUrl, 301);
+        // }
     }
    
 }

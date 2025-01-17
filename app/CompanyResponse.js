@@ -21,14 +21,14 @@ export default async function GetCompanyResponse() {
 const header_url = reqHeaders.get('x-url') || "";
 const parsedUrl = new URL(header_url);
 let pathname= parsedUrl.pathname;
-console.log("before"+pathname); 
+// console.log("before"+pathname); 
 pathname = pathname.replace(/^\//, '');
-console.log(pathname); 
+// console.log(pathname); 
 if(pathname == '/'){
     pathname = '';
 }
 
-console.log(pathname); 
+// console.log(pathname); 
 let company_api = `http://company.imutils.com/wservce/company/detail/token/imobile@15061981/glusrid//alias/${domainName}/cat_link/${pathname}/modid/tdw/`;
 console.log("api_url"+company_api);
   try {
