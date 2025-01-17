@@ -6,8 +6,8 @@ import Header from "./Components/Header";
 
 export default async function Index() {
   const data = await GetCompanyResponse();
-  console.log("api company data");
-  console.log(data);
+  // console.log("api company data");
+  // console.log(data);
 
   return (
     <>

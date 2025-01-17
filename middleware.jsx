@@ -1,32 +1,34 @@
 import { NextResponse } from 'next/server';
-import { headers } from 'next/headers';
-import getForbiddenRoute from './app/getForbiddenRoute'
-
+import { RedirectRoute_beforeAPI } from './app/getRedirectionRoute';
 
 // Middleware function
 export async function middleware(request) {
-  const url = request.nextUrl; 
+  const url = request.nextUrl;
   const referer = request.headers.get('referer');
 
   if (url.pathname.startsWith('/_next')) {
     return NextResponse.next(); // Skip middleware for internal calls
   }
-  
-  //If  pathname mathces  with the forbiddenRoute list, Set 403 Forbidden header 
 
+  console.log("inside middleware !!");
+  console.log(url.pathname);
 
-  else {
-    const requestHeaders = new Headers(request.headers);
-    requestHeaders.set('x-url', request.url);
+  // Check the Redirection Route
+  const redirect_condn = RedirectRoute_beforeAPI(url.pathname); // Pass only the pathname to the function
+  if (redirect_condn) {
+    // If redirect_condn is true, perform the redirect
+    return redirect_condn; // This should already be a NextResponse.redirect from RedirectRoute_beforeAPI
+  }
 
+  // If no redirect, proceed to the next handler
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-url', request.url);
   return NextResponse.next({
     request: {
       // Apply new request headers
       headers: requestHeaders,
-    }
+    },
   });
-  }
-  
 }
 
 // Configure matcher to apply middleware

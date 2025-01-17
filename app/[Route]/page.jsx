@@ -8,7 +8,7 @@ import Aboutus from "../Components/Aboutus"
 import NotFound from "../Components/Notfound"
 import Catindex from "../Components/Catindex";
 import Enquiry from "../Components/Enquiry"
-import RedirectRoute from "../getRedirectionRoute"
+// import RedirectRoute from "../getRedirectionRoute"
 import { NextResponse } from "next/server";
 
 // Assuming you have this component
@@ -18,9 +18,9 @@ export default async function Index() {
   console.log("Inside dynamic Route");
   console.log("printing data");
   data = await GetCompanyResponse();
-  console.log(data, 'page');
+  // console.log(data, 'page');
   let pagename = data?.DATA?.PAGELINKTYPE;
-  console.log(pagename,'pagename');
+  // console.log(pagename,'pagename');
   let pageComponent;
 
   // Use switch-case to render different Components based on pagename
@@ -42,12 +42,12 @@ export default async function Index() {
 
   }
 
-  for (const key in RedirectRoute) {
-    if (pagename == key) {
-      let newUrl = "https://www.revomac.net/enquiry.html";
-      return NextResponse.redirect(newUrl, 301);
-    }
-}
+//   for (const key in RedirectRoute) {
+//     if (pagename == key) {
+//       let newUrl = "https://www.revomac.net/enquiry.html";
+//       return NextResponse.redirect(newUrl, 301);
+//     }
+// }
 
   return (
     <>
