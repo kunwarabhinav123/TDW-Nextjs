@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { RedirectRoute_beforeAPI } from './app/getRedirectionRoute';
-import { getForbiddenRoute_beforeAPI } from './app/getForbiddenRoute'
+import { ForbiddenRoute_beforeAPI } from './app/getForbiddenRoute'
 
 // Middleware function
 export async function middleware(request) {
@@ -23,7 +23,7 @@ export async function middleware(request) {
 
 
   //Check Forbidden Condition 
-  const forbiden_condn = getForbiddenRoute_beforeAPI(url);
+  const forbiden_condn = ForbiddenRoute_beforeAPI(url);
   if (forbiden_condn.status === 403) {
     // return new NextResponse(forbiden_condn.message, { status: 403 });
     const html = new Response(forbiden_condn.message, {

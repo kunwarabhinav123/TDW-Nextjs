@@ -22,6 +22,6 @@ export function RedirectRoute_beforeAPI(url) {
 }
 
 
-export function RedirectRoute_afterAPI(data, page_req) {
+export function RedirectRoute_afterAPI(data, url) {
 
 }

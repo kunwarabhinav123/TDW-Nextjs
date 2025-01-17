@@ -1,4 +1,4 @@
-export function getForbiddenRoute_beforeAPI(url) {
+export function ForbiddenRoute_beforeAPI(url) {
     //list of all forbidden Route
     console.log("Inside forbidden functn");
     const forbiddenRoutes = [
@@ -50,6 +50,6 @@ export function getForbiddenRoute_beforeAPI(url) {
 
 
 
-export function getForbiddenRoute_afterAPI() {
+export function getForbiddenRoute_afterAPI(url,data) {
     //list of all forbidden Route
 }
