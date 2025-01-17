@@ -29,7 +29,7 @@ if(pathname == '/'){
 }
 
 console.log(pathname); 
-let company_api = `http://stg-company.imutils.com/wservce/company/detail/token/imobile@15061981/glusrid//alias/${domainName}/cat_link/${pathname}/modid/tdw/`;
+let company_api = `http://company.imutils.com/wservce/company/detail/token/imobile@15061981/glusrid//alias/${domainName}/cat_link/${pathname}/modid/tdw/`;
 console.log("api_url"+company_api);
   try {
     const res = await fetch(

@@ -1,8 +1,8 @@
-import Footer from "./components/Footer"; // Import the Footer component
+import Footer from "./Components/Footer"; // Import the Footer component
 import GetCompanyResponse from "./CompanyResponse";
-import Topnavigation from "./components/Topnavigation";
+import Topnavigation from "./Components/Topnavigation";
 import Homepage from "./Components/Index";
-import Header from "./components/Header";
+import Header from "./Components/Header";
 
 export default async function Index() {
   const data = await GetCompanyResponse();

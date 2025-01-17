@@ -1,13 +1,14 @@
 // app/page.jsx
 
-import Footer from "../components/Footer"; 
+import Footer from "../Components/Footer"; 
 import GetCompanyResponse from "../CompanyResponse";
-import Header from "../components/Header";
-import Category from "../components/Category"; 
-import Aboutus from "../components/Aboutus"
-import NotFound from "../components/Notfound"
-import Catindex from "../components/Catindex";
-import Enquiry from "../components/Enquiry"
+import Header from "../Components/Header";
+import Category from "../Components/Category"; 
+import Aboutus from "../Components/Aboutus"
+import NotFound from "../Components/Notfound"
+import Catindex from "../Components/Catindex";
+import Enquiry from "../Components/Enquiry"
+import GetRedirectionRoute from "../getRedirectionRoute"
 
 // Assuming you have this component
 
@@ -21,7 +22,7 @@ export default async function Index() {
   console.log(pagename,'pagename');
   let pageComponent;
 
-  // Use switch-case to render different components based on pagename
+  // Use switch-case to render different Components based on pagename
   switch (pagename) {
     case 'category':
       pageComponent = <Category companydata={data} />;
@@ -37,6 +38,8 @@ export default async function Index() {
         break;
     default:
       pageComponent = <NotFound />; // Default to homepage if no match
+
+      //if pagename matches with redirection list then redirect then add the pageComponent as per the redirection mentioned in getRedirection component
   }
 
   return (
