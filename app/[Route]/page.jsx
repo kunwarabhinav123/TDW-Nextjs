@@ -8,7 +8,8 @@ import Aboutus from "../Components/Aboutus"
 import NotFound from "../Components/Notfound"
 import Catindex from "../Components/Catindex";
 import Enquiry from "../Components/Enquiry"
-import GetRedirectionRoute from "../getRedirectionRoute"
+import RedirectRoute from "../getRedirectionRoute"
+import { NextResponse } from "next/server";
 
 // Assuming you have this component
 
@@ -39,8 +40,14 @@ export default async function Index() {
     default:
       pageComponent = <NotFound />; // Default to homepage if no match
 
-      //if pagename matches with redirection list then redirect then add the pageComponent as per the redirection mentioned in getRedirection component
   }
+
+  for (const key in RedirectRoute) {
+    if (pagename == key) {
+      let newUrl = "https://www.revomac.net/enquiry.html";
+      return NextResponse.redirect(newUrl, 301);
+    }
+}
 
   return (
     <>
