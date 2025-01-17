@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { RedirectRoute_beforeAPI } from './app/getRedirectionRoute';
-import { getForbiddenRoute_beforeAPI} from './app/getForbiddenRoute'
+import { getForbiddenRoute_beforeAPI } from './app/getForbiddenRoute'
 
 // Middleware function
 export async function middleware(request) {
@@ -18,9 +18,9 @@ export async function middleware(request) {
   const redirect_condn = RedirectRoute_beforeAPI(url); // Pass only the pathname to the function
   if (redirect_condn) {
     // If redirect_condn is true, perform the redirect
-    return redirect_condn; 
+    return redirect_condn;
   }
-  
+
 
   //Check Forbidden Condition 
   const forbiden_condn = getForbiddenRoute_beforeAPI(url);

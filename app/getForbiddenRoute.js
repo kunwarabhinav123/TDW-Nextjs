@@ -1,6 +1,6 @@
 export function getForbiddenRoute_beforeAPI(url) {
     //list of all forbidden Route
-   console.log("Inside forbidden functn");
+    console.log("Inside forbidden functn");
     const forbiddenRoutes = [
         /\.php/,
         /\/wp-/,
