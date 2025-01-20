@@ -20,8 +20,11 @@ export function RedirectRoute_beforeAPI(url) {
     }
    
 }
-
-
-export function RedirectRoute_afterAPI(data, url) {
-
+export function RedirectRoute_afterAPI(data, url) 
+{
+    let URL_DETAIL=data?.URL_DETAIL?.URL;
+    if(URL_DETAIL=="/revomacindustries")
+        console.log(URL_DETAIL);
+    else
+        console.log("URL not found");
 }
