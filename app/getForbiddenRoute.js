@@ -41,10 +41,23 @@ export function ForbiddenRoute_beforeAPI(url) {
     const isForbidden = forbiddenRoutes.some((pattern) => pattern.test(page_req1));
     if (isForbidden) {
         // Handle the forbidden case (e.g., returning a forbidden message or component)
-        return { status: 403, message: '<h1>Forbidden: Access to this resource is restricted.</h1>' };
+        console.log("forbidden !!!");
+        const mesg = '<h1>Forbidden: Access to this resource is restricted.</h1>';
+        // return { status: 403, message: '<h1>Forbidden: Access to this resource is restricted.</h1>' };
+
+          // if (forbiden_condn.status === 403) {
+  //   // return new NextResponse(forbiden_condn.message, { status: 403 });
+    const html = new Response(mesg, {
+      status: 403,
+      headers: { 'Content-Type': 'text/html' },
+    });
+    return html;
+    
+  // }
     }
     else {
-        return { status: 200 }
+      console.log("not forbidden")
+        return false
     }
 }
 
@@ -64,4 +77,3 @@ export function ForbiddenRoute_afterAPI(url, data) {
     // No further processing; this behaves like exit in PHP
     return null;
   }
-  

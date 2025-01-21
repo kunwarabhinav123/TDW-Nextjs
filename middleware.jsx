@@ -2,32 +2,37 @@ import { NextResponse } from 'next/server';
 import { RedirectRoute_beforeAPI } from './app/getRedirectionRoute';
 import { ForbiddenRoute_beforeAPI } from './app/getForbiddenRoute';
 
-import GetCompanyResponse from "./app/CompanyResponse";
 // Middleware function
-export async function middleware(request) {
+export  function middleware(request) {
   const url = request.nextUrl;
   const referer = request.headers.get('referer');
-  console.log(request)
+  // console.log(request)
   if (url.pathname.startsWith('/_next')) {
     return NextResponse.next(); // Skip middleware for internal calls
   }
 
   console.log("inside middleware !!");
-  console.log(url);
+  // console.log(url);
 
   // Check the Redirection Route
-  RedirectRoute_beforeAPI(url); // Pass only the pathname to the function
-
+  const checkRedirectURL = RedirectRoute_beforeAPI(url) // Pass only the pathname to the function
+  if(checkRedirectURL){
+    return NextResponse.redirect(checkRedirectURL, 301);
+  }
   //Check Forbidden Condition 
 
-  ForbiddenRoute_beforeAPI(url);
+  const checkForbidden = ForbiddenRoute_beforeAPI(url);
+  if(checkForbidden) {
+    return checkForbidden
+  }
+
   // if (forbiden_condn.status === 403) {
   //   // return new NextResponse(forbiden_condn.message, { status: 403 });
-  //   const html = new Response(forbiden_condn.message, {
-  //     status: 403,
-  //     headers: { 'Content-Type': 'text/html' },
-  //   });
-  //   return html;
+    const html = new Response(forbiden_condn.message, {
+      status: 403,
+      headers: { 'Content-Type': 'text/html' },
+    });
+    return html;
   // }
 
     // Fetch Data from the Company API
@@ -73,3 +78,4 @@ export async function middleware(request) {
 export const config = {
   matcher: '/:path*', // Match root URL or other paths (e.g., '/about', '/api/*')
 };
+

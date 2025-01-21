@@ -12,18 +12,19 @@ export function RedirectRoute_beforeAPI(url) {
         let newUrl = domainName+'/'+ RedirectRoute[key];
         if (page_req1 == key) {
             console.log("Redirection to new url !!")
-            return NextResponse.redirect(newUrl, 301);
+            return newUrl
         }
         // else{
         //     return NextResponse.redirect(newUrl, 301);
         // }
     }
+    return false
    
 }
 export function RedirectRoute_afterAPI(data, url) 
 {
-    console.log(data);
-    console.log(url);
+    // console.log(data);
+    // console.log(url);
     let URL_DETAIL=data?.URL_DETAIL?.URL;
     if(URL_DETAIL=="/revomacindustries")
         console.log(URL_DETAIL);
