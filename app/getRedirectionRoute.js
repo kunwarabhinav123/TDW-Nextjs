@@ -22,6 +22,8 @@ export function RedirectRoute_beforeAPI(url) {
 }
 export function RedirectRoute_afterAPI(data, url) 
 {
+    console.log(data);
+    console.log(url);
     let URL_DETAIL=data?.URL_DETAIL?.URL;
     if(URL_DETAIL=="/revomacindustries")
         console.log(URL_DETAIL);

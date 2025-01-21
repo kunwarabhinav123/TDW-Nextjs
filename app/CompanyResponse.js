@@ -1,4 +1,6 @@
 import { headers } from 'next/headers';
+import { ForbiddenRoute_afterAPI } from './getForbiddenRoute';
+import { RedirectRoute_afterAPI } from './getRedirectionRoute';
 
 export default async function GetCompanyResponse() {
   // Fetch headers
@@ -42,8 +44,13 @@ console.log("api_url"+company_api);
     }
 
     const companyData = await res.json();
+
+    RedirectRoute_afterAPI(companyData,parsedUrl);
+    ForbiddenRoute_afterAPI(companyData,parsedUrl);
+
     return companyData;
-  } catch (error) {
+  }
+   catch (error) {
     console.error("Error fetching company data:", error);
     throw error; // Re-throw to handle it in the caller
   }
